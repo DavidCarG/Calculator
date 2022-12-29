@@ -14,3 +14,21 @@ function multiply(a,b){
 function divide(a,b){
     return a/b;
 }
+
+//Operate function
+function operate(operator,a,b){
+
+    switch(operator){
+        case '+':
+            return add(a,b);
+        case '-':
+            return substract(a,b);
+        case '*':
+            return multiply(a,b);
+        case '/':
+            return divide(a,b);
+        default:
+            return "Invalid elements."
+    }
+
+}
