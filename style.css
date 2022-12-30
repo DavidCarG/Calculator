@@ -24,6 +24,30 @@ body{
 
     margin-top: 30px;
     border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.screen-upper{
+    height:50px;
+    font-size: 30px;
+    width: 290px;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.screen-lower{
+    height: 100px;
+    font-size: 45px;
+    width: 290px;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .calc-keyboard{
@@ -43,8 +67,10 @@ body{
     height: 50px;
     width: 50px;
     border-radius: 15px;
+    font-size: 20px;
 }
 
 .special{
     background-color: red;
+    font-size: 18px;
 }
