@@ -34,11 +34,10 @@ function operate(operator,a,b){
 }
 
 //Button functions
-let upperDisplay;
-let lowerDisplay = "0";
 let lowerValue = 0;
 let upperValue = 0;
 let operatorBool = false;
+let delBool = false;
 let operator = "";
 
 const upperScreen = document.querySelector('.screen-upper');
@@ -60,7 +59,10 @@ function updateDisplay(e){
                 operatorBool = false;
 
             }else{
-                upperValue = operate(operator,upperValue,lowerValue);
+                if(delBool)
+                    upperValue = Number(lowerScreen.textContent);
+                else
+                    upperValue = operate(operator,upperValue,lowerValue);
                 lowerValue = upperValue;
 
                 upperScreen.textContent = upperValue +" "+c;
@@ -83,3 +85,28 @@ function updateDisplay(e){
 
 const btnList = Array.from(document.querySelectorAll('.calc-keyboard .row .calc-button.number'));
 btnList.forEach(btn => btn.addEventListener('click',updateDisplay));
+
+//Delete function
+function del(){
+
+    console.log("Lower Value: "+lowerValue);
+    console.log("Upper Value: "+upperValue);
+
+    let newValue = lowerScreen.textContent.slice(0,-1);
+    lowerScreen.textContent = newValue;
+    lowerValue = Number(newValue);
+    delBool = true;
+
+}
+
+document.querySelector('.calc-button.del').addEventListener('click',del);
+
+//Clear function
+function acClear(){
+    upperScreen.textContent = "";
+    lowerScreen.textContent = "0";
+    upperValue = 0;
+    lowerValue = 0;
+}
+
+document.querySelector('.calc-button.ac').addEventListener('click',acClear);

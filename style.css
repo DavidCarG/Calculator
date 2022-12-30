@@ -70,7 +70,8 @@ body{
     font-size: 20px;
 }
 
-.special{
+.ac,
+.del{
     background-color: red;
     font-size: 18px;
 }
