@@ -12,6 +12,7 @@ function multiply(a,b){
 }
 
 function divide(a,b){
+    //Returns a maximum of three decimal numbers
     return Math.floor((a/b)*1000)/1000;
 }
 
