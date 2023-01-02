@@ -1,14 +1,15 @@
+let h = "hello I made it here";
 //Math functions
 function add(a,b){
-    return a+b;
+    return Math.floor((a+b)*1000)/1000;
 }
 
 function substract(a,b){
-    return a-b;
+    return Math.floor((a-b)*1000)/1000;
 }
 
 function multiply(a,b){
-    return a*b;
+    return Math.floor((a*b)*1000)/1000;
 }
 
 function divide(a,b){
@@ -39,15 +40,22 @@ let lowerValue = 0;
 let upperValue = 0;
 let operatorBool = false;
 let delBool = false;
+let decimalBool = false;
 let operator = "";
+let result = "";
 
 const upperScreen = document.querySelector('.screen-upper');
 const lowerScreen = document.querySelector('.screen-lower');
 
 function updateDisplay(e){
     let c = e.target.textContent;
-    if(isNaN(c)){
+
+    if(lowerScreen.textContent.includes('.') && c==='.')
+        return;
+
+    if(isNaN(c) && c!=='.'){
         operatorBool=true;
+        decimalBool=false;
         if(upperScreen.textContent===""){
             upperScreen.textContent = lowerValue + " " + c;
             upperValue = lowerValue;
@@ -57,15 +65,18 @@ function updateDisplay(e){
                 upperScreen.textContent = `${upperValue} ${operator} ${lowerValue} = ${operate(operator,upperValue,lowerValue)}`;
 
                 lowerScreen.textContent = operate(operator,upperValue,lowerValue);
+                result = lowerScreen.textContent;
                 operatorBool = false;
+                decimalBool = false;
 
             }else{
-                if(delBool)
+                if(result!=lowerScreen.textContent && result!=="")
                     upperValue = Number(lowerScreen.textContent);
                 else
                     upperValue = operate(operator,upperValue,lowerValue);
-                lowerValue = upperValue;
 
+                result = "";
+                lowerValue = upperValue;
                 upperScreen.textContent = upperValue +" "+c;
                 lowerScreen.textContent = lowerValue;
 
@@ -74,8 +85,15 @@ function updateDisplay(e){
         }
 
     }else{
-        if((lowerValue===0 && c!=="0") || operatorBool)
-            lowerScreen.textContent = c;
+        if((lowerValue<1 && c!=="0") || operatorBool)
+            if(c==='.'){
+                lowerScreen.textContent = "0."
+                decimalBool = true;
+            }else if(decimalBool){
+                lowerScreen.textContent += c;
+            }else{
+                lowerScreen.textContent = c;
+            }
         else if(lowerValue>0)
             lowerScreen.textContent += c;
         
@@ -93,8 +111,6 @@ function del(){
     let newValue = lowerScreen.textContent.slice(0,-1);
     lowerScreen.textContent = newValue;
     lowerValue = Number(newValue);
-    delBool = true;
-
 }
 
 document.querySelector('.calc-button.del').addEventListener('click',del);
