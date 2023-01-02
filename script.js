@@ -12,7 +12,7 @@ function multiply(a,b){
 }
 
 function divide(a,b){
-    return a/b;
+    return Math.floor((a/b)*1000)/1000;
 }
 
 //Operate function
@@ -88,9 +88,6 @@ btnList.forEach(btn => btn.addEventListener('click',updateDisplay));
 
 //Delete function
 function del(){
-
-    console.log("Lower Value: "+lowerValue);
-    console.log("Upper Value: "+upperValue);
 
     let newValue = lowerScreen.textContent.slice(0,-1);
     lowerScreen.textContent = newValue;
