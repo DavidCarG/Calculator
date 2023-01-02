@@ -24,9 +24,9 @@ function operate(operator,a,b){
             return add(a,b);
         case '-':
             return substract(a,b);
-        case '*':
+        case '×':
             return multiply(a,b);
-        case '/':
+        case '÷':
             return divide(a,b);
         default:
             return "Invalid elements."
