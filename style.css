@@ -8,6 +8,7 @@ body{
     height:auto;
     min-height: 500px;
     width: 350px;
+    margin-top: 20px;
     background-color: rgb(131, 137, 143);
 
     display: flex;
@@ -16,16 +17,20 @@ body{
     row-gap: 40px;
 
     border-radius: 10px;
+    border-style: solid;
+    border-color: rgb(113, 119, 124);
+    border-width: 10px;
 }
 
 .calc-screen{
     height:auto;
-    min-height: 150px;
-    width: 300px;
+    min-height: 140px;
+    width: 290px;
     background-color: rgb(52, 77, 50);
 
     margin-top: 30px;
     border-radius: 10px;
+    padding-right: 10px;
 
     display: flex;
     flex-direction: column;
@@ -33,6 +38,10 @@ body{
 
     word-wrap: break-word;
     word-break: break-all;
+
+    border-style: solid;
+    border-color: rgb(43, 65, 42);
+    border-width: 5px;
 }
 
 .screen-upper{
@@ -76,6 +85,10 @@ body{
     width: 50px;
     border-radius: 15px;
     font-size: 20px;
+}
+
+.calc-button:hover{
+    cursor: grab;
 }
 
 .ac,
